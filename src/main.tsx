@@ -1,9 +1,23 @@
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+
+const theme = extendTheme({
+  colors: {
+    dark: {
+      800: "#181818",
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
