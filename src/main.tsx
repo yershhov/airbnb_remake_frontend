@@ -6,9 +6,9 @@ import App from "./App";
 
 const theme = extendTheme({
   colors: {
-    dark: {
-      800: "#181818",
-    },
+    // dark: {
+    //   800: "#181818",
+    // },
   },
 });
 
