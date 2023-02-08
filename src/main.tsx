@@ -5,10 +5,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 const theme = extendTheme({
-  colors: {
-    // dark: {
-    //   800: "#181818",
-    // },
+  fonts: {
+    heading: "montserrat",
   },
 });
 

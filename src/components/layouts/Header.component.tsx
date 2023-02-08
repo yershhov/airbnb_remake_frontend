@@ -28,7 +28,7 @@ const Header = () => {
       justifyContent="space-between"
     >
       <Box>
-        <Heading>LOGO</Heading>
+        <Heading fontWeight={"900"}>LOGO</Heading>
       </Box>
       <Box w="30%" h="4rem" bg="gray.700" borderRadius="50px"></Box>
       <Flex alignItems="center" gap={5}>
@@ -66,11 +66,9 @@ const Header = () => {
               />
             </Flex>
           </MenuButton>
-          <MenuList>
-            <MenuItem>Link 1</MenuItem>
-            <MenuItem>Link 2</MenuItem>
-            <MenuDivider />
-            <MenuItem>Link 3</MenuItem>
+          <MenuList boxShadow="none">
+            <MenuItem>Log In</MenuItem>
+            <MenuItem>Sign Up</MenuItem>
           </MenuList>
         </Menu>
       </Flex>
