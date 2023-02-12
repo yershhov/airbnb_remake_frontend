@@ -1,13 +1,18 @@
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  defineStyleConfig,
+  extendTheme,
+} from "@chakra-ui/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 const theme = extendTheme({
-  fonts: {
-    heading: "montserrat",
+  colors: {
+    main: "#181818",
   },
+  components: {},
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

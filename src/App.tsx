@@ -15,14 +15,7 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route
-          path="/home"
-          element={
-            <Box h={"100vh"} w="100%">
-              <HomePage />
-            </Box>
-          }
-        />
+        <Route path="/" element={<HomePage />} />
       </Routes>
     </>
   );
