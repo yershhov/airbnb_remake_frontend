@@ -12,46 +12,57 @@ import {
   MenuItem,
   MenuList,
   MenuDivider,
+  VStack,
 } from "@chakra-ui/react";
+import { AiOutlineCode } from "react-icons/ai";
+import CategoriesNavigation from "./CategoriesNavigation";
 
 const Header = () => {
   return (
-    <Flex
-      bg="firstLayer"
-      boxSizing="border-box"
-      borderBottom="1px solid var(--chakra-colors-borderColor)"
-      h="5rem"
-      w="100%"
-      px="3rem"
-      justifyContent="space-between"
-      alignItems="center"
-    >
-      <Heading>
-        LO
-        <Text display="inline" color="primary">
-          GO
-        </Text>
-      </Heading>
-
-      <Menu>
-        <MenuButton>
-          <Flex w="100%" justifyContent="space-between" alignItems="center">
-            <HamburgerIcon color="white" />
-            <Avatar
-              boxSize={7}
-              name="Segun Adebayo"
-              src="https://bit.ly/sage-adebayo"
-            />
+    <VStack spacing={0} position="fixed" w="100%">
+      <Flex
+        bg="firstLayer"
+        boxSizing="border-box"
+        borderBottom="1px solid var(--chakra-colors-borderColor)"
+        h="5rem"
+        w="100%"
+        px="6rem"
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <Heading fontSize={22}>
+          <Flex alignItems="center" gap={2}>
+            <AiOutlineCode size={30} />
+            <Box display={{ base: "none", lg: "block" }}>
+              LO
+              <Text display="inline" color="primary">
+                GO
+              </Text>
+            </Box>
           </Flex>
-        </MenuButton>
-        <MenuList>
-          <MenuItem fontWeight={600}>Log In</MenuItem>
-          <MenuItem>Sign Up</MenuItem>
-          <MenuDivider />
-          <MenuItem>Logout</MenuItem>
-        </MenuList>
-      </Menu>
-    </Flex>
+        </Heading>
+
+        <Menu>
+          <MenuButton>
+            <Flex w="100%" justifyContent="space-between" alignItems="center">
+              <HamburgerIcon color="white" />
+              <Avatar
+                boxSize={7}
+                name="Segun Adebayo"
+                src="https://bit.ly/sage-adebayo"
+              />
+            </Flex>
+          </MenuButton>
+          <MenuList>
+            <MenuItem fontWeight={600}>Log In</MenuItem>
+            <MenuItem>Sign Up</MenuItem>
+            <MenuDivider />
+            <MenuItem>Logout</MenuItem>
+          </MenuList>
+        </Menu>
+      </Flex>
+      <CategoriesNavigation />
+    </VStack>
   );
 };
 

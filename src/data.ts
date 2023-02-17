@@ -1,26 +1,18 @@
 interface DataInterface {
   text: string;
+  category: string;
 }
 export const dataArray: DataInterface[] = [
   {
     text: "Text1",
+    category: "national-park",
   },
   {
-    text: "Text2",
+    text: "Text2Text2",
+    category: "river",
   },
   {
     text: "Text3",
-  },
-  {
-    text: "Text4",
-  },
-  {
-    text: "Text5",
-  },
-  {
-    text: "Text6",
-  },
-  {
-    text: "Text7",
+    category: "creative-place",
   },
 ];

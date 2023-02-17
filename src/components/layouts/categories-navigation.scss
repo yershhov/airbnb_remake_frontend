@@ -1,0 +1,28 @@
+@mixin after-mixin {
+  content: "";
+  position: absolute;
+  top: calc(100% + 12px);
+  height: 2px;
+  width: 100%;
+  display: block;
+  background: rgb(255, 255, 255);
+}
+
+.category-navlink {
+  .category {
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 1;
+    }
+    &:hover::after {
+      @include after-mixin;
+      opacity: 0.3;
+    }
+  }
+  .current {
+    opacity: 1;
+    &::after {
+      @include after-mixin;
+    }
+  }
+}

@@ -9,13 +9,13 @@ import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
-import BottomHeader from "./components/layouts/BottomHeader";
+import CategoriesNavigation from "./components/layouts/CategoriesNavigation";
 
 function App() {
   return (
     <>
       <Header />
-      <BottomHeader />
+
       <Routes>
         <Route path="/" element={<HomePage />} />
       </Routes>
