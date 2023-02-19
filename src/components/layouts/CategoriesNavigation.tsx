@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 import { AiOutlineCode } from "react-icons/ai";
 import { Link, useSearchParams } from "react-router-dom";
@@ -6,14 +6,18 @@ import { dataArray } from "../../data";
 import { BiSliderAlt } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import "./categories-navigation.scss";
+import { ActiveCategoryContext } from "../../App";
 
 const CategoriesNavigation = () => {
+  const { activeCategory, setActiveCategory } = useContext(
+    ActiveCategoryContext
+  );
   const [searchParams, setSearchParams] = useSearchParams();
-  const activeTab = searchParams.get("tab_id") ?? dataArray[0].tab_id;
 
   function handleTab(event: React.MouseEvent<HTMLElement>, id: number) {
     event.preventDefault();
-    setSearchParams({ tab_id: id.toString() });
+    setSearchParams({ category_id: id.toString() });
+    setActiveCategory(id ?? dataArray[0].category_id);
   }
 
   return (
@@ -34,14 +38,16 @@ const CategoriesNavigation = () => {
               key={uuidv4()}
               to="/"
               className="category-navlink"
-              onClick={(event) => handleTab(event, item.tab_id)}
+              onClick={(event) => handleTab(event, item.category_id)}
             >
               <VStack
                 color="white"
                 opacity={0.3}
                 position="relative"
                 className={`${
-                  Number(activeTab) === item.tab_id ? "current" : "not-current"
+                  activeCategory === item.category_id
+                    ? "current"
+                    : "not-current"
                 }`}
               >
                 <AiOutlineCode size={25} />

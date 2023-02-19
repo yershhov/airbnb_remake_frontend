@@ -14,11 +14,22 @@ import {
   MenuDivider,
   VStack,
 } from "@chakra-ui/react";
+import { useContext } from "react";
 import { AiOutlineCode } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+import { ActiveCategoryContext } from "../../App";
+import { dataArray } from "../../data";
 import CategoriesNavigation from "./CategoriesNavigation";
 
 const Header = () => {
+  const { setActiveTab } = useContext(ActiveCategoryContext);
+  const [_, setSearchParams] = useSearchParams();
+
+  function handleTab(event: React.MouseEvent<HTMLElement>) {
+    event.preventDefault();
+    setSearchParams({});
+    setActiveTab(dataArray[0].category_id);
+  }
   return (
     <VStack spacing={0} position="fixed" w="100%">
       <Flex
@@ -31,7 +42,7 @@ const Header = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Link to="/">
+        <Link to="/" onClick={handleTab}>
           <Heading fontSize={22}>
             <Flex alignItems="center" gap={2}>
               <AiOutlineCode size={30} />
