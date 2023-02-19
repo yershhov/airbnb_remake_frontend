@@ -20,6 +20,12 @@ export const theme = extendTheme({
         fontWeight: 800,
       },
     },
+    Text: {
+      baseStyle: {
+        color: "white",
+        fontWeight: 400,
+      },
+    },
     Button: {
       baseStyle: {
         border: "2px solid var(--chakra-colors-borderColor)",

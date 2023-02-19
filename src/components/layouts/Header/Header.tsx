@@ -17,8 +17,8 @@ import {
 import { useContext } from "react";
 import { AiOutlineCode } from "react-icons/ai";
 import { Link, useSearchParams } from "react-router-dom";
-import { ActiveCategoryContext } from "../../App";
-import { dataArray } from "../../data";
+import { ActiveCategoryContext } from "../../../App";
+import { dataArray } from "../../../data";
 import CategoriesNavigation from "./CategoriesNavigation";
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
     setActiveTab(dataArray[0].category_id);
   }
   return (
-    <VStack spacing={0} position="fixed" w="100%">
+    <VStack spacing={0} position="fixed" w="100%" zIndex={9999}>
       <Flex
         bg="firstLayer"
         boxSizing="border-box"

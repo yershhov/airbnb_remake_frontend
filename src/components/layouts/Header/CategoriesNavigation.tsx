@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import { Box, Button, Flex, Text, VStack } from "@chakra-ui/react";
 import { AiOutlineCode } from "react-icons/ai";
 import { Link, useSearchParams } from "react-router-dom";
-import { dataArray } from "../../data";
 import { BiSliderAlt } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import "./categories-navigation.scss";
-import { ActiveCategoryContext } from "../../App";
+import { ActiveCategoryContext } from "../../../App";
+import { dataArray } from "../../../data";
 
 const CategoriesNavigation = () => {
   const { activeCategory, setActiveCategory } = useContext(
