@@ -1,6 +1,6 @@
 interface DataInterface {
   text: string;
-  category: string;
+  category?: string;
 }
 export const dataArray: DataInterface[] = [
   {
@@ -16,3 +16,4 @@ export const dataArray: DataInterface[] = [
     category: "creative-place",
   },
 ];
+console.log(dataArray.length);

@@ -16,7 +16,7 @@
     }
     &:hover::after {
       @include after-mixin;
-      opacity: 0.3;
+      opacity: 0.2;
     }
   }
   .current {

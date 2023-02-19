@@ -10,7 +10,7 @@ const baseStyle = definePartsStyle({
   button: {
     // this will style the MenuButton component
     w: "4.4rem",
-    border: "1px solid var(--chakra-colors-borderColor)",
+    border: "2px solid var(--chakra-colors-borderColor)",
     borderRadius: "50px",
     p: "0.3rem",
     pl: "0.6rem",
@@ -26,6 +26,7 @@ const baseStyle = definePartsStyle({
     color: "white",
     fontSize: 14,
     px: 1,
+    boxShadow: "none",
   },
   item: {
     // this will style the MenuItem and MenuItemOption components

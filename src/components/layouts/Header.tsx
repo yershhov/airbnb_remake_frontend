@@ -15,6 +15,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { AiOutlineCode } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import CategoriesNavigation from "./CategoriesNavigation";
 
 const Header = () => {
@@ -30,17 +31,19 @@ const Header = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Heading fontSize={22}>
-          <Flex alignItems="center" gap={2}>
-            <AiOutlineCode size={30} />
-            <Box display={{ base: "none", lg: "block" }}>
-              LO
-              <Text display="inline" color="primary">
-                GO
-              </Text>
-            </Box>
-          </Flex>
-        </Heading>
+        <Link to="/">
+          <Heading fontSize={22}>
+            <Flex alignItems="center" gap={2}>
+              <AiOutlineCode size={30} />
+              <Box display={{ base: "none", lg: "block" }}>
+                LO
+                <Text display="inline" color="primary">
+                  GO
+                </Text>
+              </Box>
+            </Flex>
+          </Heading>
+        </Link>
 
         <Menu>
           <MenuButton>

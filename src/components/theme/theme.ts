@@ -7,6 +7,7 @@ export const theme = extendTheme({
     secondLayer: "#262626",
     borderColor: "hsla(0, 0%, 100%, 0.07)",
     primary: "#9591FF",
+    bone: "",
   },
   fonts: {
     heading: `'Montserrat', sans-serif`,
@@ -19,15 +20,10 @@ export const theme = extendTheme({
         fontWeight: 800,
       },
     },
-    Flex: {
-      baseStyle: {
-        bg: "white",
-        w: "100%",
-        h: "5rem",
-      },
-    },
     Button: {
       baseStyle: {
+        border: "2px solid var(--chakra-colors-borderColor)",
+        fontWeight: 500,
         _hover: {
           filter: "brightness(1.1)",
         },
@@ -38,10 +34,12 @@ export const theme = extendTheme({
       variants: {
         primary: {
           bg: "primary",
+          border: "none",
         },
         secondary: {
           bg: "secondLayer",
         },
+        empty: {},
       },
     },
     Menu: menuStyle,
