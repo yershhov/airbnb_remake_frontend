@@ -1,8 +1,14 @@
 import { AspectRatio, Box, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
+import { RentalModel } from "../../../data";
 
-const RentalCard = () => {
+interface RentalCardProps {
+  rental?: RentalModel;
+}
+
+const RentalCard = (props: RentalCardProps) => {
+  const rental = props.rental;
   return (
     <Flex flexDirection="column" gap={3} fontSize={14}>
       <AspectRatio ratio={1}>
@@ -10,7 +16,9 @@ const RentalCard = () => {
       </AspectRatio>
       <Flex flexDirection="column" gap={1}>
         <Flex justifyContent={"space-between"}>
-          <Text fontWeight={600}>Florence, Italy</Text>
+          <Text fontWeight={600}>
+            {rental!.location ?? "Undefined location"}
+          </Text>
           <Flex alignItems="center" gap={1}>
             <AiFillStar />
             <Text>4.4</Text>

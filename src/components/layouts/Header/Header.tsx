@@ -18,7 +18,7 @@ import { useContext } from "react";
 import { AiOutlineCode } from "react-icons/ai";
 import { Link, useSearchParams } from "react-router-dom";
 import { ActiveCategoryContext } from "../../../App";
-import { dataArray } from "../../../data";
+import { categories } from "../../../data";
 import CategoriesNavigation from "./CategoriesNavigation";
 
 const Header = () => {
@@ -28,7 +28,7 @@ const Header = () => {
   function handleTab(event: React.MouseEvent<HTMLElement>) {
     event.preventDefault();
     setSearchParams({});
-    setActiveTab(dataArray[0].category_id);
+    setActiveTab(categories[0].category_id);
   }
   return (
     <VStack spacing={0} position="fixed" w="100%" zIndex={9999}>
@@ -48,7 +48,7 @@ const Header = () => {
               <AiOutlineCode size={30} />
               <Box display={{ base: "none", lg: "block" }}>
                 LO
-                <Text display="inline" color="primary">
+                <Text fontWeight={800} display="inline" color="primary">
                   GO
                 </Text>
               </Box>

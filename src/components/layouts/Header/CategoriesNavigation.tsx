@@ -6,7 +6,7 @@ import { BiSliderAlt } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import "./categories-navigation.scss";
 import { ActiveCategoryContext } from "../../../App";
-import { dataArray } from "../../../data";
+import { categories } from "../../../data";
 
 const CategoriesNavigation = () => {
   const { activeCategory, setActiveCategory } = useContext(
@@ -17,7 +17,7 @@ const CategoriesNavigation = () => {
   function handleTab(event: React.MouseEvent<HTMLElement>, id: number) {
     event.preventDefault();
     setSearchParams({ category_id: id.toString() });
-    setActiveCategory(id ?? dataArray[0].category_id);
+    setActiveCategory(id ?? categories[0].category_id);
   }
 
   return (
@@ -32,7 +32,7 @@ const CategoriesNavigation = () => {
       alignItems="center"
     >
       <Flex gap={10}>
-        {dataArray.map((item) => {
+        {categories.map((item) => {
           return (
             <Link
               key={uuidv4()}
@@ -66,7 +66,9 @@ const CategoriesNavigation = () => {
           borderRadius="10px"
           leftIcon={<BiSliderAlt />}
         >
-          <Text fontSize={10}>Filters</Text>
+          <Text fontSize={10} fontWeight={500}>
+            Filters
+          </Text>
         </Button>
       </Box>
     </Flex>

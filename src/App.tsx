@@ -10,7 +10,7 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import { createContext, useEffect, useState } from "react";
-import { dataArray } from "./data";
+import { categories } from "./data";
 import { Grid } from "@chakra-ui/react";
 
 export const ActiveCategoryContext = createContext({} as any);
@@ -22,7 +22,7 @@ function App() {
     // invalid id provided in url to handle
     searchParams.get("category_id")
       ? Number(searchParams.get("category_id"))
-      : dataArray[0].category_id
+      : categories[0].category_id
   );
 
   return (

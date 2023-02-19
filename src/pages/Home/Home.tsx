@@ -4,8 +4,6 @@ import { ActiveCategoryContext } from "../../App";
 import RentalsContainer from "./components/layouts/Rentals/RentalsContainer";
 
 const HomePage = () => {
-  const { activeCategory } = useContext(ActiveCategoryContext);
-
   return (
     <Box
       placeItems="center"
@@ -13,6 +11,7 @@ const HomePage = () => {
       w="100%"
       bg="firstLayer"
       pt="10rem"
+      pb="4rem"
       px="6rem"
     >
       <RentalsContainer />
