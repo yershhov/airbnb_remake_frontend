@@ -1,19 +1,19 @@
 interface DataInterface {
   text: string;
-  category?: string;
+  tab_id: number;
 }
 export const dataArray: DataInterface[] = [
   {
-    text: "Text1",
-    category: "national-park",
+    text: "Big city",
+    tab_id: 1,
   },
   {
-    text: "Text2Text2",
-    category: "river",
+    text: "River",
+    tab_id: 2,
   },
   {
-    text: "Text3",
-    category: "creative-place",
+    text: "Design",
+    tab_id: 3,
   },
 ];
 console.log(dataArray.length);
