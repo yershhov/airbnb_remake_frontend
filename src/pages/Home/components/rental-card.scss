@@ -14,7 +14,7 @@
     // .ratio1 gets applied in markup
     width: 8px;
     border-radius: 50%;
-    background: white;
+    background: var(--chakra-colors-secondLayer);
     opacity: 0.5;
   }
   .carousel-indicator-active {

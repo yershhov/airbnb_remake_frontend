@@ -84,9 +84,13 @@ const RentalCard = (props: RentalCardProps) => {
             bottom="1rem"
             gap={1.5}
           >
-            <button className="carousel-indicator ratio1 carousel-indicator-active "></button>
-            <button className="carousel-indicator ratio1"></button>
-            <button className="carousel-indicator ratio1"></button>
+            {rental?.images!.map((image, index) => (
+              <button
+                className={`carousel-indicator ratio1 ${
+                  index === currentImageIndex ? "carousel-indicator-active" : ""
+                }`}
+              ></button>
+            ))}
           </Flex>
         </Box>
       </Box>
