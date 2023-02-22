@@ -61,7 +61,7 @@ const CategoriesNavigation = () => {
       </Flex>
       <Box>
         <Button
-          variant="enpty"
+          variant="empty"
           h="3rem"
           borderRadius="10px"
           leftIcon={<BiSliderAlt />}

@@ -1,7 +1,9 @@
-import { AspectRatio, Box, Flex, Text } from "@chakra-ui/react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { AspectRatio, Box, Button, Flex, Text } from "@chakra-ui/react";
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { RentalModel } from "../../../data";
+import "./rental-card.scss";
 
 interface RentalCardProps {
   rental?: RentalModel;
@@ -11,9 +13,59 @@ const RentalCard = (props: RentalCardProps) => {
   const rental = props.rental;
   return (
     <Flex flexDirection="column" gap={3} fontSize={14}>
-      <AspectRatio ratio={1}>
-        <Box bg="borderColor" w="100%" borderRadius="20px"></Box>
-      </AspectRatio>
+      <Box
+        position="relative"
+        width="100%"
+        borderRadius="10px"
+        className="carousel ratio1"
+      >
+        <Box h="100%">
+          <Box>
+            {rental?.images!.map((image, index) => (
+              <Box position="absolute" width="100%" top={0} bottom={0}>
+                <img className="carousel-image" src={`${image}`} alt="" />
+              </Box>
+            ))}
+          </Box>
+          <Flex
+            justifyContent="space-between"
+            alignItems="center"
+            h="100%"
+            p="1rem"
+            className="carousel-buttons"
+          >
+            <Button
+              size="sm"
+              className="ratio1"
+              borderRadius="50%"
+              variant="secondary"
+            >
+              <ChevronLeftIcon />
+            </Button>
+            <Button
+              size="sm"
+              className="ratio1"
+              borderRadius="50%"
+              variant="secondary"
+            >
+              <ChevronRightIcon />
+            </Button>
+          </Flex>
+
+          <Flex
+            justifyContent="center"
+            position="absolute"
+            w="100%"
+            bottom="1rem"
+            gap={1.5}
+          >
+            <button className="carousel-indicator ratio1 carousel-indicator-active "></button>
+            <button className="carousel-indicator ratio1"></button>
+            <button className="carousel-indicator ratio1"></button>
+          </Flex>
+        </Box>
+      </Box>
+
       <Flex flexDirection="column" gap={1}>
         <Flex justifyContent={"space-between"}>
           <Text fontWeight={600}>

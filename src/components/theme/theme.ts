@@ -2,6 +2,10 @@ import { extendTheme } from "@chakra-ui/react";
 import { menuStyle } from "./menuStyle";
 
 export const theme = extendTheme({
+  config: {
+    initialColorMode: "dark",
+    useSystemColorMode: false,
+  },
   colors: {
     firstLayer: "#181818",
     secondLayer: "#262626",
