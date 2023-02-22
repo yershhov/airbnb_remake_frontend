@@ -1,6 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { AspectRatio, Box, Button, Flex, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { RentalModel } from "../../../data";
 import "./rental-card.scss";
@@ -11,6 +11,20 @@ interface RentalCardProps {
 
 const RentalCard = (props: RentalCardProps) => {
   const rental = props.rental;
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handlePrevClick = () => {
+    console.log("prev");
+
+    setCurrentImageIndex(currentImageIndex - 1);
+  };
+
+  const handleNextClick = () => {
+    console.log("next");
+    setCurrentImageIndex(currentImageIndex + 1);
+  };
+
   return (
     <Flex flexDirection="column" gap={3} fontSize={14}>
       <Box
@@ -34,22 +48,33 @@ const RentalCard = (props: RentalCardProps) => {
             p="1rem"
             className="carousel-buttons"
           >
-            <Button
-              size="sm"
-              className="ratio1"
-              borderRadius="50%"
-              variant="secondary"
-            >
-              <ChevronLeftIcon />
-            </Button>
-            <Button
-              size="sm"
-              className="ratio1"
-              borderRadius="50%"
-              variant="secondary"
-            >
-              <ChevronRightIcon />
-            </Button>
+            {currentImageIndex !== 0 ? (
+              <Button
+                size="sm"
+                className="ratio1"
+                borderRadius="50%"
+                variant="secondary"
+                onClick={handlePrevClick}
+              >
+                <ChevronLeftIcon />
+              </Button>
+            ) : (
+              <Box></Box>
+            )}
+
+            {currentImageIndex !== rental!.images!.length - 1 ? (
+              <Button
+                size="sm"
+                className="ratio1"
+                borderRadius="50%"
+                variant="secondary"
+                onClick={handleNextClick}
+              >
+                <ChevronRightIcon />
+              </Button>
+            ) : (
+              <Box></Box>
+            )}
           </Flex>
 
           <Flex
