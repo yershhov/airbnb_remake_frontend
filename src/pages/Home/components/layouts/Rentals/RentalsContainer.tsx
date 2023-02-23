@@ -2,7 +2,8 @@ import { GridItem, SimpleGrid } from "@chakra-ui/react";
 import React, { useContext } from "react";
 import { ActiveCategoryContext } from "../../../../../App";
 import { rentals } from "../../../../../data";
-import RentalCard from "../../RentalCard";
+import RentalCard from "../../RentalCard/RentalCard";
+import { v4 as uuidv4 } from "uuid";
 
 const RentalsContainer = () => {
   const { activeCategory } = useContext(ActiveCategoryContext);
@@ -17,7 +18,7 @@ const RentalsContainer = () => {
       {rentals.map((item) => {
         if (item.category_id === activeCategory) {
           return (
-            <GridItem>
+            <GridItem key={uuidv4()}>
               <RentalCard rental={item} />
             </GridItem>
           );

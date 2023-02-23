@@ -1,6 +1,4 @@
-import { Box, Grid } from "@chakra-ui/react";
-import React, { useContext } from "react";
-import { ActiveCategoryContext } from "../../App";
+import { Box } from "@chakra-ui/react";
 import RentalsContainer from "./components/layouts/Rentals/RentalsContainer";
 
 const HomePage = () => {
