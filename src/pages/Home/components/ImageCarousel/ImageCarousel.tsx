@@ -1,130 +1,116 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-import { Flex, Button, Box } from "@chakra-ui/react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  Flex,
+  Button,
+  Box,
+  IconButton,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
+import React, { useState } from "react";
+// Here we have used react-icons package for the icons
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+// And react-slick as our Carousel Lib
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 interface ImageCarouselProps {
   images: string[];
 }
+const animationDurationMs = 500;
+// Settings for the slider
+const settings = {
+  dots: false,
+  arrows: false,
+  fade: false,
+  infinite: false,
+  autoplay: false,
+  speed: animationDurationMs,
+  autoplaySpeed: 5000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
-const ImageCarousel = (props: ImageCarouselProps) => {
+function ImageCarousel(props: ImageCarouselProps) {
+  // As we have used custom buttons, we need a reference variable to
+  // change the state
+  const [slider, setSlider] = useState<Slider | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [slideWidth, setSlideWidth] = useState(0);
-  const slidesContainer = useRef<HTMLDivElement>(null);
-
-  const handleWindowResize = () => {
-    setSlideWidth(
-      slidesContainer.current?.children[0].getBoundingClientRect().width!
-    );
-  };
-
-  const distanceToMovePrev = `${slideWidth * (currentImageIndex - 1)}px`;
-  const distanceToMoveNext = `${slideWidth * (currentImageIndex + 1)}px`;
-
-  const handlePrevClick = () => {
-    setCurrentImageIndex(currentImageIndex - 1);
-  };
-
-  const handleNextClick = () => {
-    setCurrentImageIndex(currentImageIndex + 1);
-  };
-
-  useEffect(() => {
-    setSlideWidth(
-      slidesContainer.current?.children[0].getBoundingClientRect().width!
-    );
-    window.addEventListener("resize", handleWindowResize, false);
-  }, []);
+  // These are the breakpoints which changes the position of the
+  // buttons as the screen size changes
+  const top = "50%";
+  const side = "0.7rem";
 
   return (
     <Box
-      position="relative"
-      width="100%"
+      position={"relative"}
+      className="ratio1"
+      w={"100%"}
+      overflow={"hidden"}
       borderRadius="10px"
-      className="carousel ratio1"
     >
-      <Box h="100%">
-        <Box ref={slidesContainer} bg="pink" position={"relative"}>
-          {props.images.map((image, index) => (
-            <Box
-              key={uuidv4()}
-              position="absolute"
-              zIndex={1000 + props.images.length - index}
-              width="100%"
-              left={index === 0 ? 0 : `${slideWidth * index}px`}
-              top={0}
-              bottom={0}
-            >
-              <img
-                className="carousel-image"
-                src={`${image}`}
-                alt={`image-${index}`}
-              />
-            </Box>
-          ))}
-        </Box>
-        <Flex
-          justifyContent="space-between"
-          alignItems="center"
-          h="100%"
-          p="1rem"
-          className="carousel-buttons"
-          position="relative"
-          zIndex={6000}
-        >
-          {currentImageIndex !== 0 ? (
-            <Button
-              size="sm"
-              className="ratio1"
-              borderRadius="50%"
-              variant="secondary"
-              onClick={() => {
-                handlePrevClick();
-                slidesContainer.current!.style.transform = `translateX(${distanceToMovePrev})`;
-              }}
-            >
-              <ChevronLeftIcon />
-            </Button>
-          ) : (
-            <Box></Box>
-          )}
-
-          {currentImageIndex !== props.images.length - 1 && (
-            <Button
-              size="sm"
-              className="ratio1"
-              borderRadius="50%"
-              variant="secondary"
-              onClick={() => {
-                handleNextClick();
-                slidesContainer.current!.style.transform = `translateX(-${distanceToMoveNext})`;
-              }}
-            >
-              <ChevronRightIcon />
-            </Button>
-          )}
-        </Flex>
-
-        <Flex
-          justifyContent="center"
+      {/* Left Icon */}
+      {currentImageIndex > 0 && (
+        <IconButton
+          aria-label="left-arrow"
+          variant={"secondary"}
+          size="sm"
+          borderRadius="full"
           position="absolute"
-          w="100%"
-          bottom="1rem"
-          gap={1.5}
-          zIndex={6000}
+          left={side}
+          top={top}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => {
+            slider?.slickPrev();
+            setTimeout(() => {
+              setCurrentImageIndex(currentImageIndex - 1);
+            }, animationDurationMs);
+          }}
         >
-          {props.images.map((image, index) => (
-            <button
-              key={uuidv4()}
-              className={`carousel-indicator ratio1 ${
-                index === currentImageIndex ? "carousel-indicator-active" : ""
-              }`}
-            ></button>
-          ))}
-        </Flex>
-      </Box>
+          <FiChevronLeft />
+        </IconButton>
+      )}
+      {/* Right Icon */}
+      {currentImageIndex !== props.images.length - 1 && (
+        <IconButton
+          aria-label="right-arrow"
+          borderRadius="full"
+          size="sm"
+          variant={"secondary"}
+          position="absolute"
+          right={side}
+          top={top}
+          transform={"translate(0%, -50%)"}
+          zIndex={2}
+          onClick={() => {
+            slider?.slickNext();
+            setTimeout(() => {
+              setCurrentImageIndex(currentImageIndex + 1);
+            }, animationDurationMs);
+          }}
+        >
+          <FiChevronRight />
+        </IconButton>
+      )}
+
+      {/* Slider */}
+      <Slider {...settings} ref={(slider) => setSlider(slider)}>
+        {props.images.map((url, index) => (
+          <Box
+            key={index}
+            position="relative"
+            className="ratio1"
+            w="80%"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={`url(${url})`}
+          />
+        ))}
+      </Slider>
     </Box>
   );
-};
+}
 
 export default ImageCarousel;
